@@ -1,0 +1,343 @@
+<svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', monospace">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1525;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Path A - Vector - cyan -->
+    <linearGradient id="vecGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.05" />
+    </linearGradient>
+    <linearGradient id="vecBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0090cc;stop-opacity:0.6" />
+    </linearGradient>
+
+    <!-- Path B - Graph - violet -->
+    <linearGradient id="graphGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:0.05" />
+    </linearGradient>
+    <linearGradient id="graphBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c084fc;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.6" />
+    </linearGradient>
+
+    <!-- Path C - Agentic - amber -->
+    <linearGradient id="agentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.05" />
+    </linearGradient>
+    <linearGradient id="agentBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:0.6" />
+    </linearGradient>
+
+    <!-- Fusion green -->
+    <linearGradient id="fusionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.25" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:0.1" />
+    </linearGradient>
+
+    <!-- Router -->
+    <linearGradient id="routerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f2040;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Query box -->
+    <linearGradient id="queryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2a4a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1a35;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Answer box -->
+    <linearGradient id="answerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d2a1f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#071a12;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Glow filters -->
+    <filter id="glowCyan" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowViolet" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowAmber" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowGreen" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Arrowheads -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#00d4ff" opacity="0.85"/>
+    </marker>
+    <marker id="arrowViolet" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#c084fc" opacity="0.85"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#fbbf24" opacity="0.85"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#10b981" opacity="0.9"/>
+    </marker>
+    <marker id="arrowWhite" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8" opacity="0.8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="560" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#1e3a5f" stroke-width="0.5" opacity="0.4">
+    <line x1="0" y1="112" x2="960" y2="112"/>
+    <line x1="0" y1="224" x2="960" y2="224"/>
+    <line x1="0" y1="336" x2="960" y2="336"/>
+    <line x1="0" y1="448" x2="960" y2="448"/>
+    <line x1="192" y1="0" x2="192" y2="560"/>
+    <line x1="384" y1="0" x2="384" y2="560"/>
+    <line x1="576" y1="0" x2="576" y2="560"/>
+    <line x1="768" y1="0" x2="768" y2="560"/>
+  </g>
+
+  <!-- Title -->
+  <text x="480" y="30" text-anchor="middle" fill="#e2e8f0" font-size="13" letter-spacing="4" opacity="0.7">TRI-FUSION RETRIEVAL ENGINE</text>
+  <line x1="200" y1="38" x2="760" y2="38" stroke="#1e3a5f" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════
+       QUERY INPUT (left)
+  ══════════════════════════════════════════ -->
+  <rect x="20" y="240" width="110" height="60" rx="6" fill="url(#queryGrad)" stroke="#334155" stroke-width="1.5"/>
+  <text x="75" y="263" text-anchor="middle" fill="#94a3b8" font-size="8.5" letter-spacing="2">INPUT</text>
+  <text x="75" y="279" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold" letter-spacing="1">QUERY</text>
+  <text x="75" y="293" text-anchor="middle" fill="#64748b" font-size="8">user question</text>
+
+  <!-- Arrow: Query → Router -->
+  <line x1="130" y1="270" x2="178" y2="270" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowWhite)" stroke-dasharray="4,2" opacity="0.7"/>
+
+  <!-- ══════════════════════════════════════════
+       SMART ROUTER LLM
+  ══════════════════════════════════════════ -->
+  <rect x="182" y="218" width="116" height="104" rx="8" fill="url(#routerGrad)" stroke="#2d5a8e" stroke-width="2"/>
+  <!-- Corner accents -->
+  <line x1="182" y1="230" x2="194" y2="218" stroke="#4a9ede" stroke-width="1.5"/>
+  <line x1="286" y1="218" x2="298" y2="230" stroke="#4a9ede" stroke-width="1.5"/>
+  <line x1="182" y1="310" x2="194" y2="322" stroke="#4a9ede" stroke-width="1.5"/>
+  <line x1="286" y1="322" x2="298" y2="310" stroke="#4a9ede" stroke-width="1.5"/>
+
+  <text x="240" y="247" text-anchor="middle" fill="#64748b" font-size="8" letter-spacing="2">SMART</text>
+  <text x="240" y="262" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="bold" letter-spacing="1">ROUTER</text>
+  <text x="240" y="276" text-anchor="middle" fill="#7dd3fc" font-size="12" font-weight="bold" letter-spacing="1">LLM</text>
+  <text x="240" y="295" text-anchor="middle" fill="#475569" font-size="7.5">evaluates &amp; selects</text>
+  <text x="240" y="307" text-anchor="middle" fill="#475569" font-size="7.5">pipeline combination</text>
+
+  <!-- ══════════════════════════════════════════
+       ARROWS: Router → 3 Paths
+  ══════════════════════════════════════════ -->
+  <!-- To Path A (top) -->
+  <path d="M298,248 Q330,248 330,140 L358,140" stroke="#00d4ff" stroke-width="1.8" fill="none" marker-end="url(#arrowCyan)" opacity="0.8"/>
+  <!-- To Path B (middle) -->
+  <line x1="298" y1="270" x2="358" y2="270" stroke="#c084fc" stroke-width="1.8" marker-end="url(#arrowViolet)" opacity="0.8"/>
+  <!-- To Path C (bottom) -->
+  <path d="M298,292 Q330,292 330,400 L358,400" stroke="#fbbf24" stroke-width="1.8" fill="none" marker-end="url(#arrowAmber)" opacity="0.8"/>
+
+  <!-- ══════════════════════════════════════════
+       PATH A — VECTOR (top strip)
+  ══════════════════════════════════════════ -->
+  <!-- Lane background -->
+  <rect x="360" y="60" width="440" height="152" rx="8" fill="url(#vecGrad)" stroke="url(#vecBorder)" stroke-width="1.5"/>
+  <!-- Label tab -->
+  <rect x="360" y="60" width="120" height="22" rx="4" fill="#00d4ff" opacity="0.15"/>
+  <text x="368" y="75" fill="#00d4ff" font-size="9" font-weight="bold" letter-spacing="2">PATH A — VECTOR</text>
+
+  <!-- Step 1: Embed -->
+  <rect x="370" y="92" width="92" height="96" rx="6" fill="#00d4ff" fill-opacity="0.07" stroke="#00d4ff" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="416" y="111" text-anchor="middle" fill="#00d4ff" font-size="8" letter-spacing="1" opacity="0.7">EMBED</text>
+  <text x="416" y="127" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Sentence</text>
+  <text x="416" y="141" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Transformer</text>
+  <text x="416" y="160" text-anchor="middle" fill="#475569" font-size="7.5">all-MiniLM-L6-v2</text>
+  <text x="416" y="174" text-anchor="middle" fill="#475569" font-size="7.5">→ 384-dim vector</text>
+
+  <!-- Arrow A1 -->
+  <line x1="462" y1="140" x2="480" y2="140" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrowCyan)" opacity="0.7"/>
+
+  <!-- Step 2: pgvector -->
+  <rect x="482" y="92" width="92" height="96" rx="6" fill="#00d4ff" fill-opacity="0.07" stroke="#00d4ff" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="528" y="111" text-anchor="middle" fill="#00d4ff" font-size="8" letter-spacing="1" opacity="0.7">SEARCH</text>
+  <text x="528" y="127" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">pgvector</text>
+  <text x="528" y="141" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">ANN Index</text>
+  <text x="528" y="160" text-anchor="middle" fill="#475569" font-size="7.5">cosine similarity</text>
+  <text x="528" y="174" text-anchor="middle" fill="#475569" font-size="7.5">top-k chunks</text>
+
+  <!-- Arrow A2 -->
+  <line x1="574" y1="140" x2="592" y2="140" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#arrowCyan)" opacity="0.7"/>
+
+  <!-- Step 3: Chunks -->
+  <rect x="594" y="92" width="92" height="96" rx="6" fill="#00d4ff" fill-opacity="0.07" stroke="#00d4ff" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="640" y="111" text-anchor="middle" fill="#00d4ff" font-size="8" letter-spacing="1" opacity="0.7">RETRIEVE</text>
+  <text x="640" y="127" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Semantic</text>
+  <text x="640" y="141" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Chunks</text>
+  <text x="640" y="160" text-anchor="middle" fill="#475569" font-size="7.5">doc fragments</text>
+  <text x="640" y="174" text-anchor="middle" fill="#475569" font-size="7.5">ranked by score</text>
+
+  <!-- ══════════════════════════════════════════
+       PATH B — GRAPH (middle strip)
+  ══════════════════════════════════════════ -->
+  <rect x="360" y="194" width="440" height="152" rx="8" fill="url(#graphGrad)" stroke="url(#graphBorder)" stroke-width="1.5"/>
+  <rect x="360" y="194" width="120" height="22" rx="4" fill="#a855f7" opacity="0.15"/>
+  <text x="368" y="209" fill="#c084fc" font-size="9" font-weight="bold" letter-spacing="2">PATH B — GRAPH</text>
+
+  <!-- Step 1: Entry point -->
+  <rect x="370" y="226" width="92" height="106" rx="6" fill="#a855f7" fill-opacity="0.07" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="416" y="245" text-anchor="middle" fill="#c084fc" font-size="8" letter-spacing="1" opacity="0.7">MATCH</text>
+  <text x="416" y="261" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Semantic</text>
+  <text x="416" y="275" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Entry Point</text>
+  <text x="416" y="294" text-anchor="middle" fill="#475569" font-size="7.5">vector similarity</text>
+  <text x="416" y="307" text-anchor="middle" fill="#475569" font-size="7.5">on graph nodes</text>
+
+  <!-- Arrow B1 -->
+  <line x1="462" y1="279" x2="480" y2="279" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrowViolet)" opacity="0.7"/>
+
+  <!-- Step 2: BFS traversal -->
+  <rect x="482" y="226" width="92" height="106" rx="6" fill="#a855f7" fill-opacity="0.07" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="528" y="245" text-anchor="middle" fill="#c084fc" font-size="8" letter-spacing="1" opacity="0.7">TRAVERSE</text>
+  <text x="528" y="261" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">BFS / CTE</text>
+  <text x="528" y="275" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Traversal</text>
+  <text x="528" y="294" text-anchor="middle" fill="#475569" font-size="7.5">typed relations</text>
+  <text x="528" y="307" text-anchor="middle" fill="#475569" font-size="7.5">is_a · causes · part_of</text>
+
+  <!-- Arrow B2 -->
+  <line x1="574" y1="279" x2="592" y2="279" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrowViolet)" opacity="0.7"/>
+
+  <!-- Step 3: Graph nodes -->
+  <rect x="594" y="226" width="92" height="106" rx="6" fill="#a855f7" fill-opacity="0.07" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="640" y="245" text-anchor="middle" fill="#c084fc" font-size="8" letter-spacing="1" opacity="0.7">RETRIEVE</text>
+  <text x="640" y="261" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Entity</text>
+  <text x="640" y="275" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Subgraph</text>
+  <text x="640" y="294" text-anchor="middle" fill="#475569" font-size="7.5">People · Concepts</text>
+  <text x="640" y="307" text-anchor="middle" fill="#475569" font-size="7.5">Tech + confidence</text>
+
+  <!-- ══════════════════════════════════════════
+       PATH C — AGENTIC (bottom strip)
+  ══════════════════════════════════════════ -->
+  <rect x="360" y="328" width="440" height="152" rx="8" fill="url(#agentGrad)" stroke="url(#agentBorder)" stroke-width="1.5"/>
+  <rect x="360" y="328" width="130" height="22" rx="4" fill="#f59e0b" opacity="0.15"/>
+  <text x="368" y="343" fill="#fbbf24" font-size="9" font-weight="bold" letter-spacing="2">PATH C — AGENTIC</text>
+
+  <!-- Step 1: scan_folder -->
+  <rect x="370" y="360" width="92" height="106" rx="6" fill="#f59e0b" fill-opacity="0.07" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="416" y="379" text-anchor="middle" fill="#fbbf24" font-size="8" letter-spacing="1" opacity="0.7">SCAN</text>
+  <text x="416" y="395" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">VFS Explorer</text>
+  <text x="416" y="412" text-anchor="middle" fill="#475569" font-size="7.5">scan_folder()</text>
+  <text x="416" y="425" text-anchor="middle" fill="#475569" font-size="7.5">SQL virtual FS</text>
+  <text x="416" y="439" text-anchor="middle" fill="#475569" font-size="7.5">PostgreSQL</text>
+
+  <!-- Arrow C1 -->
+  <line x1="462" y1="413" x2="480" y2="413" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowAmber)" opacity="0.7"/>
+
+  <!-- Step 2: read + grep -->
+  <rect x="482" y="360" width="92" height="106" rx="6" fill="#f59e0b" fill-opacity="0.07" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="528" y="379" text-anchor="middle" fill="#fbbf24" font-size="8" letter-spacing="1" opacity="0.7">DIVE</text>
+  <text x="528" y="395" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Tool-Call</text>
+  <text x="528" y="409" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Agent Loop</text>
+  <text x="528" y="428" text-anchor="middle" fill="#475569" font-size="7.5">read() · grep()</text>
+  <text x="528" y="441" text-anchor="middle" fill="#475569" font-size="7.5">LangChain/LlamaIndex</text>
+
+  <!-- Arrow C2 -->
+  <line x1="574" y1="413" x2="592" y2="413" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowAmber)" opacity="0.7"/>
+
+  <!-- Step 3: Synthesis -->
+  <rect x="594" y="360" width="92" height="106" rx="6" fill="#f59e0b" fill-opacity="0.07" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="640" y="379" text-anchor="middle" fill="#fbbf24" font-size="8" letter-spacing="1" opacity="0.7">SYNTHESIZE</text>
+  <text x="640" y="395" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Cross-Ref</text>
+  <text x="640" y="409" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-weight="bold">Synthesis</text>
+  <text x="640" y="428" text-anchor="middle" fill="#475569" font-size="7.5">backtrack refs</text>
+  <text x="640" y="441" text-anchor="middle" fill="#475569" font-size="7.5">deep reasoning</text>
+
+  <!-- ══════════════════════════════════════════
+       ARROWS: 3 paths → Fusion
+  ══════════════════════════════════════════ -->
+  <!-- Path A → Fusion -->
+  <path d="M686,140 Q730,140 730,240 L730,254" stroke="#00d4ff" stroke-width="1.8" fill="none" marker-end="url(#arrowCyan)" opacity="0.75"/>
+  <!-- Path B → Fusion -->
+  <line x1="686" y1="279" x2="744" y2="279" stroke="#c084fc" stroke-width="1.8" fill="none" marker-end="url(#arrowViolet)" opacity="0.75"/>
+  <!-- Path C → Fusion -->
+  <path d="M686,413 Q730,413 730,316 L730,302" stroke="#fbbf24" stroke-width="1.8" fill="none" marker-end="url(#arrowAmber)" opacity="0.75"/>
+
+  <!-- ══════════════════════════════════════════
+       FUSION BOX
+  ══════════════════════════════════════════ -->
+  <!-- Outer glow -->
+  <rect x="742" y="218" width="118" height="124" rx="10" fill="#10b981" fill-opacity="0.08" filter="url(#softGlow)"/>
+  <!-- Box -->
+  <rect x="744" y="220" width="114" height="120" rx="8" fill="url(#fusionGrad)" stroke="#10b981" stroke-width="2" opacity="0.95"/>
+  <!-- Top accent line -->
+  <line x1="756" y1="220" x2="846" y2="220" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+
+  <text x="801" y="246" text-anchor="middle" fill="#6ee7b7" font-size="8.5" letter-spacing="2">FUSION</text>
+  <text x="801" y="263" text-anchor="middle" fill="#ecfdf5" font-size="11" font-weight="bold">Merge &amp;</text>
+  <text x="801" y="277" text-anchor="middle" fill="#ecfdf5" font-size="11" font-weight="bold">Dedupe</text>
+  <line x1="760" y1="286" x2="842" y2="286" stroke="#10b981" stroke-width="0.8" opacity="0.5"/>
+  <text x="801" y="300" text-anchor="middle" fill="#475569" font-size="7.5">cross-validate</text>
+  <text x="801" y="313" text-anchor="middle" fill="#475569" font-size="7.5">score boost</text>
+  <text x="801" y="326" text-anchor="middle" fill="#475569" font-size="7.5">multi-path confirm</text>
+
+  <!-- Arrow: Fusion → Answer -->
+  <line x1="858" y1="280" x2="888" y2="280" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)" opacity="0.9"/>
+
+  <!-- ══════════════════════════════════════════
+       ANSWER BOX
+  ══════════════════════════════════════════ -->
+  <rect x="890" y="250" width="52" height="60" rx="6" fill="url(#answerGrad)" stroke="#10b981" stroke-width="1.5" opacity="0.9"/>
+  <text x="916" y="272" text-anchor="middle" fill="#6ee7b7" font-size="7.5" letter-spacing="1">OUTPUT</text>
+  <text x="916" y="287" text-anchor="middle" fill="#ecfdf5" font-size="10" font-weight="bold">ANS</text>
+  <text x="916" y="300" text-anchor="middle" fill="#ecfdf5" font-size="10" font-weight="bold">WER</text>
+
+  <!-- ══════════════════════════════════════════
+       LEGEND
+  ══════════════════════════════════════════ -->
+  <rect x="20" y="480" width="920" height="62" rx="6" fill="#0d1525" fill-opacity="0.6" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="40" y="497" fill="#64748b" font-size="7.5" letter-spacing="2">LEGEND</text>
+
+  <!-- Cyan -->
+  <rect x="40" y="506" width="14" height="10" rx="2" fill="#00d4ff" fill-opacity="0.2" stroke="#00d4ff" stroke-width="1"/>
+  <text x="60" y="515" fill="#94a3b8" font-size="8.5">Path A — Vector: semantic similarity via pgvector</text>
+
+  <!-- Violet -->
+  <rect x="40" y="520" width="14" height="10" rx="2" fill="#a855f7" fill-opacity="0.2" stroke="#c084fc" stroke-width="1"/>
+  <text x="60" y="529" fill="#94a3b8" font-size="8.5">Path B — Graph: BFS traversal + typed relations (is_a, causes, part_of…)</text>
+
+  <!-- Amber -->
+  <rect x="340" y="506" width="14" height="10" rx="2" fill="#f59e0b" fill-opacity="0.2" stroke="#fbbf24" stroke-width="1"/>
+  <text x="360" y="515" fill="#94a3b8" font-size="8.5">Path C — Agentic: LLM tool-calling loop over virtual file system</text>
+
+  <!-- Green -->
+  <rect x="340" y="520" width="14" height="10" rx="2" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1"/>
+  <text x="360" y="529" fill="#94a3b8" font-size="8.5">Fusion: results merged, deduplicated &amp; boosted when confirmed by multiple paths</text>
+
+  <!-- Small dots decorative -->
+  <circle cx="820" cy="506" r="1.5" fill="#334155"/>
+  <circle cx="830" cy="506" r="1.5" fill="#334155"/>
+  <circle cx="840" cy="506" r="1.5" fill="#334155"/>
+  <text x="855" y="510" fill="#334155" font-size="8">Router selects any combination</text>
+  <circle cx="820" cy="523" r="1.5" fill="#334155"/>
+  <circle cx="830" cy="523" r="1.5" fill="#334155"/>
+  <circle cx="840" cy="523" r="1.5" fill="#334155"/>
+  <text x="855" y="527" fill="#334155" font-size="8">of A, B, C per query</text>
+
+</svg>
