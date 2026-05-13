@@ -10,6 +10,7 @@ class EmbedNoteRequest(BaseModel):
     id: str
     content: str
     title: str
+    tags: List[str] = []
 
 class QueryRequest(BaseModel):
     query: str

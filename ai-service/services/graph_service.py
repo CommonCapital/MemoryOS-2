@@ -66,7 +66,7 @@ async def extract_entities(text: str) -> ExtractResponse:
         print(f"Extraction error: {e}")
         return ExtractResponse(nodes=[], edges=[])
 
-async def upsert_graph(note_id: str, nodes: List[GraphNodeBase], edges: List[GraphEdgeBase], embeddings_map: Dict[str, List[float]]):
+async def upsert_graph(note_id: str, nodes: List[GraphNodeBase], edges: List[GraphEdgeBase]):
     async with get_db() as conn:
         node_id_map = {}
         for n in nodes:
@@ -76,20 +76,11 @@ async def upsert_graph(note_id: str, nodes: List[GraphNodeBase], edges: List[Gra
                 node_id_db = existing['id']
                 await conn.execute('UPDATE graph_nodes SET "noteId" = $1 WHERE id = $2', note_id, node_id_db)
             else:
-                embedding = embeddings_map.get(n.label, None)
-                embed_str = json.dumps(embedding) if embedding else None
-                if embed_str:
-                    res = await conn.fetchrow('''
-                        INSERT INTO graph_nodes (label, type, "noteId", properties, embedding)
-                        VALUES ($1, $2, $3, $4, $5::vector)
-                        RETURNING id
-                    ''', n.label, n.type, note_id, json.dumps(n.properties), embed_str)
-                else:
-                    res = await conn.fetchrow('''
-                        INSERT INTO graph_nodes (label, type, "noteId", properties)
-                        VALUES ($1, $2, $3, $4)
-                        RETURNING id
-                    ''', n.label, n.type, note_id, json.dumps(n.properties))
+                res = await conn.fetchrow('''
+                    INSERT INTO graph_nodes (label, type, "noteId", properties)
+                    VALUES ($1, $2, $3, $4)
+                    RETURNING id
+                ''', n.label, n.type, note_id, json.dumps(n.properties))
                 node_id_db = res['id']
             node_id_map[label] = node_id_db
 
@@ -134,14 +125,16 @@ async def bfs_traverse(start_node_ids: List[str], hops: int = 2, relation_filter
         res = await conn.fetch(query, start_node_ids, hops, relation_filter, min_confidence, min_weight)
         return [dict(r) for r in res]
 
-async def graph_search(embedding: List[float], hops: int = 2) -> List[NoteResult]:
-    embed_str = json.dumps(embedding)
+async def graph_search(anchor_note_ids: List[str], hops: int = 2) -> List[NoteResult]:
+    if not anchor_note_ids:
+        return []
+
     async with get_db() as conn:
+        # Start BFS from all nodes associated with the anchor notes
         start_nodes = await conn.fetch('''
-            SELECT id, label FROM graph_nodes
-            ORDER BY embedding <=> $1::vector
-            LIMIT 3
-        ''', embed_str)
+            SELECT id FROM graph_nodes
+            WHERE "noteId" = ANY($1::uuid[])
+        ''', anchor_note_ids)
 
         if not start_nodes:
             return []

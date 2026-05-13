@@ -138,18 +138,9 @@ async def get_node_relations(id: str):
 
 @router.post("/node-similarity/compute")
 async def compute_node_similarities(background_tasks: BackgroundTasks):
-    async def bg_compute():
-        async with get_db() as conn:
-            # simple cross join for similarity > 0.6
-            await conn.execute('''
-                INSERT INTO node_similarities ("nodeAId", "nodeBId", score)
-                SELECT a.id, b.id, 1 - (a.embedding <=> b.embedding)
-                FROM graph_nodes a JOIN graph_nodes b ON a.id < b.id
-                WHERE a.embedding IS NOT NULL AND b.embedding IS NOT NULL AND 1 - (a.embedding <=> b.embedding) > 0.6
-                ON CONFLICT ("nodeAId", "nodeBId") DO UPDATE SET score = EXCLUDED.score
-            ''')
-    background_tasks.add_task(bg_compute)
-    return {"status": "computing"}
+    # This feature is deprecated as we removed node embeddings to reduce vector bloat.
+    # Similarity can be derived from graph topology or shared notes in the future.
+    return {"status": "deprecated", "message": "Node embeddings removed for performance optimization."}
 
 @router.get("/subgraph")
 async def get_filtered_subgraph(relation: str = None, min_confidence: float = 0.0):
@@ -178,20 +169,13 @@ async def get_filtered_subgraph(relation: str = None, min_confidence: float = 0.
 @router.post("/reextract-all")
 async def reextract_all(background_tasks: BackgroundTasks):
     from services.graph_service import extract_entities, upsert_graph
-    from services.embedding_service import embed_text
     async def run_reextract():
         async with get_db() as conn:
             notes = await conn.fetch("SELECT id, title, content FROM notes")
         for note in notes:
             text = f"{note['title']}\n{note['content']}"
             extraction = await extract_entities(text)
-            
-            # Simple embedding map for nodes
-            embeddings_map = {}
-            for n in extraction.nodes:
-                embeddings_map[n.label] = embed_text(n.label)
-                
-            await upsert_graph(str(note['id']), extraction.nodes, extraction.edges, embeddings_map)
+            await upsert_graph(str(note['id']), extraction.nodes, extraction.edges)
             
     background_tasks.add_task(run_reextract)
     return {"status": "started"}

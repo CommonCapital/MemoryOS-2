@@ -14,15 +14,15 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const { title, content } = await request.json();
+  const { title, content, tags } = await request.json();
   const note = await prisma.note.create({
-    data: { title, content }
+    data: { title, content, tags: tags || [] }
   });
   
   fetch(`${process.env.FASTAPI_URL || 'http://localhost:8000'}/embed/note`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ id: note.id, title: note.title, content: note.content })
+    body: JSON.stringify({ id: note.id, title: note.title, content: note.content, tags: note.tags })
   }).catch(err => console.error("Failed to trigger embed:", err));
 
   return NextResponse.json(note);

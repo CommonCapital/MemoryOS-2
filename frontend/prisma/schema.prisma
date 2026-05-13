@@ -12,8 +12,10 @@ datasource db {
 model Note {
   id        String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   title     String
+  path      String    @unique @default(dbgenerated("uuid_generate_v4()::text"))
   content   String    @default("")
   tags      String[]
+  metadata  Json      @default("{}")
   embedding Unsupported("vector(384)")?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -29,7 +31,9 @@ model Note {
 model Chunk {
   id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   noteId     String    @db.Uuid
-  content    String
+  summary    String
+  startChar  Int
+  endChar    Int
   chunkIndex Int
   embedding  Unsupported("vector(384)")?
   note       Note      @relation(fields: [noteId], references: [id], onDelete: Cascade)
@@ -43,7 +47,6 @@ model GraphNode {
   type       String    @default("concept")
   noteId     String?   @db.Uuid
   properties Json      @default("{}")
-  embedding  Unsupported("vector(384)")?
   createdAt  DateTime  @default(now())
   note       Note?     @relation(fields: [noteId], references: [id], onDelete: SetNull)
   outEdges   GraphEdge[] @relation("SourceNode")

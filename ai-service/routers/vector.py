@@ -63,9 +63,14 @@ async def reindex_all(background_tasks: BackgroundTasks):
     from routers.embed import process_note_embedding
     async def run_reindex():
         async with get_db() as conn:
-            notes = await conn.fetch("SELECT id, title, content FROM notes")
+            notes = await conn.fetch("SELECT id, title, content, tags FROM notes")
         for note in notes:
-            await process_note_embedding(str(note['id']), note['title'] or "", note['content'] or "")
+            await process_note_embedding(
+                str(note['id']), 
+                note['title'] or "", 
+                note['content'] or "",
+                note['tags'] or []
+            )
             
     background_tasks.add_task(run_reindex)
     return {"status": "started"}
